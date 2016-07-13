@@ -5,7 +5,7 @@ set -e
 
 # Prepare the runtime
 [ -d $OPENSHIFT_DATA_DIR/go ] ||
-    curl https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz |
+    curl https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz |
 tar -xzf - -C $OPENSHIFT_DATA_DIR
 # end Prepare the runtime
 # Prepare the gogs
@@ -33,6 +33,6 @@ export PATH=$PATH:$GOROOT/bin
 export HOME=$OPENSHIFT_DATA_DIR
 export USERNAME=$OPENSHIFT_APP_UUID
 cd $HOME/gogs
-HOME=$OPENSHIFT_DATA_DIR nohup $OPENSHIFT_DATA_DIR/gogs/gogs web >>$OPENSHIFT_DATA_DIR/gogs/err.log 2>&1 & echo $! > $OPENSHIFT_DATA_DIR/gogs/run.pid 
+$HOME=$OPENSHIFT_DATA_DIR nohup $OPENSHIFT_DATA_DIR/gogs/gogs web >>$OPENSHIFT_DATA_DIR/gogs/err.log 2>&1 & echo $! > $OPENSHIFT_DATA_DIR/gogs/run.pid 
 exit
 
